@@ -1,0 +1,115 @@
+# Kinetic Hanger Library
+
+This library provides a C++ implementation of a **Kinetic Hanger**—a randomized version of a kinetic heap that enforces priority relationships among elements without requiring a strictly balanced structure. The Kinetic Hanger maintains the heap property (each parent node's priority is higher than its children's priorities) while supporting efficient insertion, deletion, and certificate (event) management. The structure is randomized to ensure uniform distribution among all possible heap-like structures.
+
+## Features
+
+- **Priority-Based Structure**: Maintains a heap property where each parent has a higher priority than its children.
+- **Randomized Insertion**: Elements are randomly placed within the structure, making the hanger flexible and maintaining uniform distribution.
+- **Event Queue for Certificates**: Efficiently tracks priority relationships with an event queue.
+- **Efficient Operations**: Supports insertion, deletion, and structure building with expected logarithmic height.
+
+## Installation
+
+To use this library, simply include `kinetic_hanger.hpp` in your project and link `kinetic_hanger.cpp` during compilation. The library requires a C++17 or later compiler and the C++ Standard Library.
+
+## Usage
+
+### Example
+
+The following code demonstrates how to initialize a kinetic hanger, insert and remove elements, and check if it is empty.
+
+```cpp
+#include <iostream>
+#include "kinetic_hanger.hpp"
+
+int main() {
+    kinetic::KineticHanger hanger;
+
+    // Initialize with a set of elements
+    std::vector<int> elements = {5, 10, 15, 20, 25};
+    hanger.buildHanger(elements);
+
+    // Insert a new element
+    hanger.insert(30);
+
+    // Remove an element
+    hanger.remove(10);
+
+    // Check if the hanger is empty
+    if (!hanger.isEmpty()) {
+        std::cout << "Kinetic Hanger has elements after operations." << std::endl;
+    } else {
+        std::cout << "Kinetic Hanger is empty." << std::endl;
+    }
+
+    return 0;
+}
+
+
+
+API Reference
+Classes and Structures
+kinetic::Certificate: Represents a certificate for an element's priority.
+
+Fields:
+element: The element associated with the certificate.
+priority: The priority of the element.
+Operators:
+<: Compares certificates based on priority, for use in the event queue.
+kinetic::Node: Represents a node in the kinetic hanger.
+
+Fields:
+element: The element stored in the node.
+priority: The priority of the element.
+left: Pointer to the left child.
+right: Pointer to the right child.
+kinetic::KineticHanger: The main class that provides methods for building and modifying the kinetic hanger structure.
+
+Methods
+KineticHanger::buildHanger(const std::vector<int>& elements)
+Initializes the kinetic hanger with a set of elements, assigning each a random priority and organizing them in a randomized heap structure.
+
+Parameters:
+elements: A vector of elements to add to the hanger.
+KineticHanger::insert(int element)
+Inserts an element into the hanger at a randomized position with a random priority.
+
+Parameters:
+element: The element to insert.
+KineticHanger::remove(int element)
+Removes an element from the hanger and maintains the priority structure.
+
+Parameters:
+element: The element to remove.
+KineticHanger::isEmpty() const
+Checks if the hanger is empty.
+
+Returns: true if empty, false otherwise.
+
+Build and Run
+To build the example program:
+
+1. Create a CMakeLists.txt file:
+
+```cmake
+
+cmake_minimum_required(VERSION 3.10)
+project(KineticHanger)
+
+set(CMAKE_CXX_STANDARD 17)
+
+add_executable(KineticHangerExample main.cpp kinetic_hanger.cpp)
+
+2. Build the project:
+
+```cmake
+mkdir build
+cd build
+cmake ..
+make
+
+3. Run the executable:
+
+```cmake
+./KineticHangerExample
