@@ -1,0 +1,56 @@
+# Burrows-Wheeler Transform Library (BWT)
+
+This library provides a C++ implementation of the Burrows-Wheeler Transform (BWT) with optional Move-To-Front (MTF) encoding/decoding. The BWT is widely used in data compression algorithms and is particularly effective for text compression by making the text more amenable to entropy encoding techniques like Run-Length Encoding or Huffman coding.
+
+## Features
+
+- **Burrows-Wheeler Transform**: Transforms a block of data to prepare it for compression.
+- **Reverse Burrows-Wheeler Transform**: Reverses the BWT back to its original form.
+- **Optional Move-To-Front Encoding**: MTF encoding can be applied for further compressibility.
+- **Simple API**: Provides easy-to-use methods for file-based transformation and reverse transformation.
+
+## Installation
+
+The library requires a C++17 or later compiler and the C++ Standard Library. Include `bwt.hpp` in your project and link `bwt.cpp` to use the library.
+
+## Usage
+
+### Example
+
+```cpp
+#include <iostream>
+#include <fstream>
+#include "bwt.hpp"
+
+int main() {
+    // Open input and output files
+    std::ifstream input("input.txt", std::ios::binary);
+    std::ofstream output("transformed.bwt", std::ios::binary);
+
+    if (!input.is_open() || !output.is_open()) {
+        std::cerr << "Error opening files!" << std::endl;
+        return -1;
+    }
+
+    // Perform Burrows-Wheeler Transform with MTF encoding
+    if (bwt::BurrowsWheelerTransform::transform(input, output, bwt::XformMethod::WITH_MTF) != 0) {
+        std::cerr << "BWT Transformation failed." << std::endl;
+        return -1;
+    }
+
+    input.close();
+    output.close();
+
+    // Reverse the transformation
+    std::ifstream transformed("transformed.bwt", std::ios::binary);
+    std::ofstream restored("restored.txt", std::ios::binary);
+
+    if (bwt::BurrowsWheelerTransform::reverseTransform(transformed, restored, bwt::XformMethod::WITH_MTF) != 0) {
+        std::cerr << "BWT Reverse Transformation failed." << std::endl;
+        return -1;
+    }
+
+    std::cout << "Transformation and reverse transformation complete!" << std::endl;
+
+    return 0;
+}
