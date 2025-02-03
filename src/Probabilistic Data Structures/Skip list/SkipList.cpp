@@ -80,7 +80,6 @@ bool SkipList<T>::remove(const T& value) {
 template<typename T>
 bool SkipList<T>::contains(const T& value) const {
     auto current = head;
-    
     for (int i = current_level - 1; i >= 0; i--) {
         while (current->forward[i] && current->forward[i]->value < value) {
             current = current->forward[i];
