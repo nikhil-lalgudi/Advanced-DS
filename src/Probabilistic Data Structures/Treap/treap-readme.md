@@ -125,3 +125,7 @@ g++ -std=c++17 -O3 your_program.cpp -o your_program
 - For large datasets, pre-allocate expected number of elements
 - Avoid frequent small insertions/deletions
 - Use move semantics when possible
+
+## License
+This implementation is provided under the [MIT License](LICENSE). See the LICENSE file for details.
+
