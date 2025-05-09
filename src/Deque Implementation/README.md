@@ -4,7 +4,7 @@ This is a simplified implementation of the `std::deque` (double-ended queue) con
 
 ## Overview
 
-A deque is a sequence container that allows fast insertion and deletion at both its beginning and end. Unlike `std::vector`, which only allows efficient operations at the end, a deque is optimized for modifying both ends of the sequence.
+A deque (pronounced "deck") is a sequence container that allows fast insertion and deletion at both its beginning and end. Unlike `std::vector`, which only allows efficient operations at the end, a deque is optimized for modifying both ends of the sequence.
 
 This simplified implementation provides the core functionality of a deque using a circular buffer approach.
 
