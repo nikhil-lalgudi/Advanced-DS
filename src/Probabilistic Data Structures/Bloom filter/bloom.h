@@ -5,6 +5,8 @@
 #include <bit>
 #include <random>
 
+using namespace std;
+
 class BloomFilter {
 private:
     std::vector<uint64_t> bits;
