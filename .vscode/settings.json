@@ -54,6 +54,13 @@
         "variant": "cpp",
         "vector": "cpp",
         "algorithm": "cpp",
-        "queue": "cpp"
+        "queue": "cpp",
+        "deque": "cpp",
+        "execution": "cpp",
+        "memory": "cpp",
+        "forward_list": "cpp",
+        "iostream": "cpp",
+        "print": "cpp",
+        "stack": "cpp"
     }
 }
