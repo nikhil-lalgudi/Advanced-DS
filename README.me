@@ -1,55 +1,87 @@
-# Advanced Data Structures
-
-This repository contains C++ 17 and later implementations and explanations of various advanced and probabilistic data structures. These data structures are essential for solving complex computational problems efficiently.
-
-## Table of Contents
-
-- [Introduction](#introduction)
-- [Data Structures](#data-structures)
-    - [Trie](#trie)
-    - [Segment Tree](#segment-tree)
-    - [Fenwick Tree (Binary Indexed Tree)](#fenwick-tree-binary-indexed-tree)
-    - [Bloom Filter](#bloom-filter)
-    - [Skip List](#skip-list)
-    - [Suffix Array](#suffix-array)
-    - [K-D Tree](#k-d-tree)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+# Simple STL
 
 ## Introduction
 
-This repository is a collection of advanced data structures that are often used in competitive programming, machine learning, and other areas of computer science. Each data structure is implemented in Python and includes a detailed explanation of its usage and complexity.
+The Simple STL project is a custom implementation of the Standard Template Library (STL) containers in C++. It aims to provide a simplified and educational version of common STL containers, including sequential containers, container adapters, and unordered containers. This project is designed for learning purposes and to demonstrate the implementation of fundamental data structures in C++.
 
-## Data Structures
+## Directory Structure
 
-### Trie
+The project is organized into the following directories:
 
-A Trie is a tree-like data structure used to store a dynamic set of strings, where the keys are usually strings. It is used for efficient retrieval of a key in a dataset of strings.
+- **Sequential Containers**: Includes implementations of `vector`, `list`, `forward_list`, `deque`, and `array`.
+- **Container Adapters**: Includes implementations of `queue`, `stack`, and `priority_queue`.
+- **Unordered Containers**: Includes implementations of `unordered_set`, `unordered_map`, `unordered_multiset`, and `unordered_multimap`.
 
-### Segment Tree
+## Container Descriptions
 
-A Segment Tree is a data structure used for storing information about intervals or segments. It allows querying which of the stored segments contain a given point efficiently.
+- **Sequential Containers**: These containers store elements in a linear sequence. They include dynamic arrays (`vector`), linked lists (`list`, `forward_list`), and fixed-size arrays (`array`).
+- **Container Adapters**: These are wrappers around other containers that provide a specific interface, such as LIFO (`stack`) and FIFO (`queue`) access.
+- **Unordered Containers**: These containers store elements in a hash table, allowing for fast retrieval based on keys. They include `unordered_set` and `unordered_map`.
 
-### Fenwick Tree (Binary Indexed Tree)
+## Key Features
 
-A Fenwick Tree or Binary Indexed Tree is a data structure that provides efficient methods for calculation and manipulation of the prefix sums of a table of values.
+- **Dynamic Size Management**: Containers like `vector` and `list` can grow or shrink as needed.
+- **Efficient Access and Modification**: Provides efficient methods for accessing and modifying elements.
+- **Custom Allocator Support**: Some containers support custom allocators for memory management.
+- **Iterator Support**: Iterators are provided for traversing container elements.
 
-### Bloom Filter
+## Usage Examples
 
-A Bloom Filter is a probabilistic data structure that is used to test whether an element is a member of a set. It is highly space-efficient but allows for false positives.
+### Vector Example
+```cpp
+#include "vector.h"
+#include <iostream>
 
-### Skip List
+int main() {
+    custom::vector<int> myVector;
+    myVector.push_back(10);
+    myVector.push_back(20);
+    std::cout << "Vector elements: ";
+    for (int val : myVector) {
+        std::cout << val << " ";
+    }
+    return 0;
+}
+```
 
-A Skip List is a data structure that allows fast search within an ordered sequence of elements. It is built on multiple layers of linked lists.
+### List Example
+```cpp
+#include "list.h"
+#include <iostream>
 
-### Suffix Array
+int main() {
+    custom::list<int> myList;
+    myList.push_back(10);
+    myList.push_front(5);
+    std::cout << "List elements: ";
+    for (int val : myList) {
+        std::cout << val << " ";
+    }
+    return 0;
+}
+```
 
-A Suffix Array is a sorted array of all suffixes of a string. It is used in a variety of string processing algorithms.
+### Queue Example
+```cpp
+#include "queue.h"
+#include <iostream>
 
-### K-D Tree
+int main() {
+    custom::queue<int> myQueue;
+    myQueue.push(10);
+    myQueue.push(20);
+    std::cout << "Queue front: " << myQueue.front() << std::endl;
+    return 0;
+}
+```
 
-A K-D Tree (k-dimensional tree) is a space-partitioning data structure for organizing points in a k-dimensional space. It is useful for nearest neighbor searches.
+## Future Enhancements
+
+- **Advanced Features**: Implement additional STL features such as `emplace` methods and allocator awareness.
+- **Performance Optimization**: Optimize the performance of certain operations and improve memory management.
+- **Comprehensive Testing**: Expand test coverage to ensure robustness and correctness of all container operations.
+
+This readme provides a high-level overview of the Simple STL project and its components. For detailed information on each container, refer to the individual readme files located in their respective directories.
 
 ## Usage
 
